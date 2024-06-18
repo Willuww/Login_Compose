@@ -1,6 +1,5 @@
 package mx.edu.uttt.logincompose.components
 
-import android.graphics.drawable.Icon
 import android.util.Log
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -79,37 +78,36 @@ fun HeadingTextComponent(value: String){
 //el painter aggra los iconos y los pone en la caja de texto
 //outline textfiel simula ser angular- eloutline pide que implementes el experimental
 //shape redondea las cajas
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-
-fun TextFieldName(labelValue:String, painterResource: Painter)
-{
+fun TextFieldName(labelValue:String, painterResource: Painter){
     val textValue = remember {
         mutableStateOf("")
     }
+
     OutlinedTextField(
-        label = { Text(text = labelValue ) },
+        label = { Text(text = labelValue)},
         modifier = Modifier
             .fillMaxWidth()
             .border(
                 BorderStroke(1.dp, Color.Gray),
                 shape = RoundedCornerShape(10)
             )
-            .background(colorResource(id = color.purple_700)),
+            .background(colorResource(id = color.placeholder_back)),
         colors = TextFieldDefaults.outlinedTextFieldColors(
-
             focusedBorderColor = colorResource(id = color.purple_700),
             focusedLabelColor = colorResource(id = color.purple_700),
-            cursorColor = colorResource(id = color.purple_700),
+            cursorColor = colorResource(id = color.purple_700)
         ),
-        KeyboardActions = KeyboardActions.Default,
+        keyboardActions = KeyboardActions.Default,
         value = textValue.value,
         onValueChange = {
-            textValue.value = it
+            textValue.value=it
         },
         leadingIcon = {
-            Icon(painter = painterResource,
-                contentDescription = "")
+            Icon(painter = painterResource, contentDescription ="" )
+
         }
     )
 }
